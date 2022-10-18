@@ -1,0 +1,22 @@
+body{
+    background-color:#121212;
+    margin:0;
+    padding:0;
+    height:100vh;
+}
+.gameboard{
+    display:grid;
+    width:50vw;
+    height:50vw;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    background-color:white;
+    gap:2px;
+}
+.gameboard div{
+    background-color:#121212;
+    color:white;
+    font-size:60px;
+    display:grid;
+    place-content: center;
+}
