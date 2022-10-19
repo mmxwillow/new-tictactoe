@@ -55,6 +55,7 @@ const gameBoard = (() => {
 
     const results = () => {
         let marker = checkForWin();
+        changeName();
         switch(marker){
             case "❌":
                 console.log(`${player1.name} won`);
@@ -66,6 +67,11 @@ const gameBoard = (() => {
                 console.log("It's a draw");
                 break;
         }
+    }
+
+    const changeName = () => {
+        player1.name = document.querySelector('#player1').value;
+        player2.name = document.querySelector('#player2').value;
     }
 
     return {board, printBoard, currentPlayer, results};
