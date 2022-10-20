@@ -58,7 +58,7 @@ const gameBoard = (() => {
         changeName();
         switch(marker){
             case "❌":
-                console.log(`${player1.name} won`);
+                displayController.showResults(`${player1.name} won`);
                 break;
             case "⭕":
                 console.log(`${player2.name} won`);
@@ -70,8 +70,10 @@ const gameBoard = (() => {
     }
 
     const changeName = () => {
-        player1.name = document.querySelector('#player1').value;
-        player2.name = document.querySelector('#player2').value;
+        let value1 = document.querySelector('#player1').value;
+        let value2 = document.querySelector('#player2').value;
+        player1.name = value1 ? value1 : "Player 1";
+        player2.name = value2 ? value2 : "Player 2";
     }
 
     return {board, printBoard, currentPlayer, results};
@@ -88,6 +90,11 @@ const displayController = (() => {
         }
     }
 
-    return{addMark}
+    const showResults = (results) => {
+        document.querySelector('.results').innerHTML = results;
+        document.querySelector('.cover').style.visibility = "visible";
+    }
+
+    return{addMark, showResults}
 })();
 gameBoard.printBoard();
