@@ -29,8 +29,17 @@ const gameBoard = (() => {
         });
     };
 
+    const resetBoard = () => {
+        for(let i = 0; i<3; i++){
+            for(let j = 0; j<3; j++){
+                board[i][j] = "";
+            }
+        }
+    }
+
     const currentPlayer = () => {
         turn++;
+        gameboard.classList.toggle('turnO');
         return (turn % 2 == 0) ? player1 : player2;
     }
 
@@ -76,7 +85,7 @@ const gameBoard = (() => {
         player2.name = value2 ? value2 : "Player 2";
     }
 
-    return {board, printBoard, currentPlayer, results};
+    return {board, printBoard, currentPlayer, results, resetBoard};
 })();
 const displayController = (() => {
     const addMark = (e) => {
@@ -93,7 +102,16 @@ const displayController = (() => {
     const showResults = (results) => {
         document.querySelector('.results').innerHTML = results;
         document.querySelector('.cover').style.visibility = "visible";
+        document.querySelector('.replay').style.transition = "";
     }
+
+    document.querySelector('.replay').addEventListener('click', () => {
+        document.querySelector('.gameboard').innerHTML = "";
+        gameBoard.resetBoard();
+        gameBoard.printBoard();
+        document.querySelector('.cover').style.visibility = "hidden";
+        document.querySelector('.replay').style.transition = "none";
+    })
 
     return{addMark, showResults}
 })();

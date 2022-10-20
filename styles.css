@@ -25,6 +25,16 @@ body{
     display:grid;
     place-content: center;
 }
+.gameboard.turnO div:empty:hover::after{
+    content: '⭕';
+    filter: grayscale(100%);
+    cursor: pointer;
+}
+.gameboard div:empty:hover::after{
+    content: '❌';
+    filter: grayscale(100%);
+    cursor: pointer;
+}
 input{
     font-family: inherit;
     font-size:18px;
