@@ -61,10 +61,10 @@ const gameBoard = (() => {
                 displayController.showResults(`${player1.name} won`);
                 break;
             case "⭕":
-                console.log(`${player2.name} won`);
+                displayController.showResults(`${player2.name} won`);
                 break;
             case true:
-                console.log("It's a draw");
+                displayController.showResults("It's a draw");
                 break;
         }
     }
